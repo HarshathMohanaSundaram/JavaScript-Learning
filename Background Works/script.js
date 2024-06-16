@@ -165,53 +165,91 @@
 
 // f();
 
-var firstName = "Harsha";
+// var firstName = "Harsha";
 
-const jonas = {
-  firstName: "Jonas",
-  year: 1991,
-  calcAge: function () {
-    console.log(this);
-    console.log(2037 - this.year);
-    //using this child scope solution 1
-    // const self = this;
-    // const isMillenial = function () {
-    //   console.log(self.year >= 1981 && self.year <= 1996);
-    // };
+// const jonas = {
+//   firstName: "Jonas",
+//   year: 1991,
+//   calcAge: function () {
+//     console.log(this);
+//     console.log(2037 - this.year);
+//     //using this child scope solution 1
+//     // const self = this;
+//     // const isMillenial = function () {
+//     //   console.log(self.year >= 1981 && self.year <= 1996);
+//     // };
 
-    //solution 2
-    const isMillenial = () => {
-      console.log(this.year >= 1981 && this.year <= 1996);
-    };
+//     //solution 2
+//     const isMillenial = () => {
+//       console.log(this.year >= 1981 && this.year <= 1996);
+//     };
 
-    isMillenial();
-  },
+//     isMillenial();
+//   },
 
-  // greet: () => {
-  //   console.log(this);
-  //   console.log(`Hey ${this.firstName}`); //arrow function does not have its own `this` it access it from parent scope
-  // },
-  greet: function () {
-    console.log(this);
-    console.log(`Hey ${this.firstName}`);
-  },
+//   // greet: () => {
+//   //   console.log(this);
+//   //   console.log(`Hey ${this.firstName}`); //arrow function does not have its own `this` it access it from parent scope
+//   // },
+//   greet: function () {
+//     console.log(this);
+//     console.log(`Hey ${this.firstName}`);
+//   },
+// };
+
+// jonas.greet();
+// jonas.calcAge();
+
+// //arguments keyword
+
+// const addExpr = function (a, b) {
+//   console.log(arguments);
+//   return a + b;
+// };
+
+// const addArrow = (a, b) => {
+//   // console.log(arguments);// It is not accessible in arrow function
+//   return a + b;
+// };
+
+// addExpr(2,4);
+// addExpr(2,4,5,7);
+// addArrow(2, 5);
+
+//Primitive vs Objects(Reference)
+
+//Primitive types
+let lastName = "Williams";
+let oldLastName = lastName;
+lastName = "Davis";
+console.log(lastName, oldLastName);
+
+//Referece types
+const jessica = {
+  firstName: "Jessica",
+  lastName: "Williams",
+  age: 27,
 };
 
-jonas.greet();
-jonas.calcAge();
+const marriedJessica = jessica;
+marriedJessica.lastName = "Davis";
 
-//arguments keyword
+console.log("Before Marriage", jessica);
+console.log("After Marriage", marriedJessica);
 
-const addExpr = function (a, b) {
-  console.log(arguments);
-  return a + b;
+//Copying Objects
+const jessica2 = {
+  firstName: "Jessica",
+  lastName: "Williams",
+  age: 27,
+  family: ["Alice", "Bob"],
 };
 
-const addArrow = (a, b) => {
-  // console.log(arguments);// It is not accessible in arrow function
-  return a + b;
-};
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = "Davis";
 
-addExpr(2,4);
-addExpr(2,4,5,7);
-addArrow(2, 5);
+jessicaCopy.family.push("Mary");
+jessicaCopy.family.push("John");
+
+console.log("Before Marriage", jessica2);
+console.log("After Marriage", jessicaCopy);
