@@ -31,11 +31,67 @@ const restaurant = {
     },
   },
 
-  orderDelivery: function ({starterIndex = 1, mainIndex = 0, time = '20:00', address}) {
+  orderDelivery: function ({
+    starterIndex = 1,
+    mainIndex = 0,
+    time = '20:00',
+    address,
+  }) {
     const [starter, main] = this.order(starterIndex, mainIndex);
-    console.log(`Order Received! ${starter} and ${main} will be delivered to ${address} at ${time}`);
+    console.log(
+      `Order Received! ${starter} and ${main} will be delivered to ${address} at ${time}`
+    );
+  },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
   },
 };
+
+// Spread Operator
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+console.log(...newArr);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+// Copy Array
+const mainMenuCopy = [...restaurant.mainMenu];
+
+//Join 2 Arrays
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu);
+
+// Iterables: arrays, strings, maps, sets, NOT objects
+const str = 'Jonas';
+
+const letters = [...str, ' ', 'S.'];
+console.log(letters);
+console.log(...str);
+
+// Real World Example
+const ingredients = [prompt("Let's make pasta! Ingredient !?"), prompt('Inredient 2?'), prompt('Ingredient 3?')];
+
+
+// restaurant.orderPasta(...ingredients)
+
+
+//Objects
+const newRestaurant = {...restaurant, founder: 'Harshath', foundedIn: '2024'};
+console.log(newRestaurant);
+
+//shallow copy
+const restaurantCopy = {...restaurant}
+restaurantCopy.name = 'One Fine Day';
+console.log(restaurantCopy.name, restaurant.name);
 
 /*
 // Destructuring Objects
