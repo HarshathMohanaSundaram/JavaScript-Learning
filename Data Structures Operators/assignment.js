@@ -222,3 +222,24 @@ const books = [
     highlighted: true,
   },
 ];
+
+// Destructuring Arrays
+
+const [firstBook, secondBook] = books
+const[,,thirdBook] = books;
+
+console.log(firstBook, secondBook, thirdBook);
+
+const exampleRatings = [['rating', 4.19], ['ratingsCount', 144584]];
+
+const[[, ratings], [,ratingsCount]] = exampleRatings;
+
+console.log('Ratings', ratings);
+console.log('Ratings Count',ratingsCount);
+
+const ratingStars = [63405, 1808];
+
+const[fiveStarRatings, oneStarRatings, threeStartRatings=0] = ratingStars;
+
+console.log(fiveStarRatings, oneStarRatings, threeStartRatings);
+
