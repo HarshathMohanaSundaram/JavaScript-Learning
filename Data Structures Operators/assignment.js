@@ -225,7 +225,7 @@ const books = [
 
 // Destructuring Arrays
 
-console.log('Destructuring Arrays');
+console.log('------Destructuring Arrays-------');
 const [firstBook, secondBook] = books;
 const [, , thirdBook] = books;
 
@@ -247,7 +247,8 @@ const [fiveStarRatings, oneStarRatings, threeStartRatings = 0] = ratingStars;
 
 console.log(fiveStarRatings, oneStarRatings, threeStartRatings);
 
-console.log('Destructuring Objects');
+// Destructuring Objects
+console.log('-----Destructuring Objects-----');
 
 const { title, author, ISBN } = books[0];
 console.log(title, author, ISBN);
@@ -287,6 +288,8 @@ printBookInfo({
 
 printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick' });
 
+// Rest Pattern
+console.log('----Spread Operator-----');
 const bookAuthors = [...books[0].author, ...books[1].author];
 console.log(bookAuthors);
 
@@ -295,3 +298,55 @@ const spellWord = function (str) {
 };
 
 spellWord('JavaScript');
+
+// Rest Pattern
+console.log('----Rest Pattern-----');
+
+const [mainKeyword, ...rest] = books[0].keywords;
+console.log(mainKeyword, rest);
+
+const { publisher: bookPublisher, ...restOfTheBook } = books[1];
+console.log(bookPublisher, restOfTheBook);
+
+const printBookAuthorsCount = function (title, ...authors) {
+  console.log(`The book ${title} has ${authors.length} authors`);
+};
+
+printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne');
+
+// Short Circuiting (&& and ||)
+
+console.log('-----------------Short Circuiting----------------------');
+
+const hasExamplesInJava = function ({ programmingLanguage }) {
+  return programmingLanguage == 'Java' || 'no data available';
+};
+
+console.log(hasExamplesInJava(books[0]));
+
+for (let i = 0; i < books.length; i++) {
+  books[i].onlineContent &&
+    console.log(`"${books[i].title}" provides online content`);
+}
+
+
+// Nullish Coalescing Operator (??)
+
+console.log('-----------Nullish Coalescing Operator (??)--------------');
+
+for (let i = 0; i < books.length; i++) {
+  books[i].onlineContent ??
+    console.log(
+      `"${books[i].title}" provides no data about its online contentt`
+    );
+}
+
+
+//Logical Assignment Operator
+for (let i = 0; i < books.length; i++) {
+  books[i].edition ||= 1;
+}
+
+for (let i = 0; i < books.length; i++) {
+  books[i].highlighted &&= !(books[i].thirdParty.goodreads.rating < 4.2);
+}
