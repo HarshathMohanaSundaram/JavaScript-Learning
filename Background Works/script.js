@@ -1,4 +1,4 @@
-// 'use-strict'
+"use-strict";
 
 // //scope and scope chain
 // const myName = 'Jonas';
@@ -53,42 +53,42 @@
 
 //Scope Practice
 //function is global scope
-function calcAge(birthYear) {
-  const age = 2037 - birthYear; //function scope
+// function calcAge(birthYear) {
+//   const age = 2037 - birthYear; //function scope
 
-  function printAge() {
-    //it cannot access gloably
-    let output = `${firstName}, You are ${age}, born in ${birthYear}`;
-    console.log(output);
+//   function printAge() {
+//     //it cannot access gloably
+//     let output = `${firstName}, You are ${age}, born in ${birthYear}`;
+//     console.log(output);
 
-    if (birthYear >= 1981 && birthYear <= 1996) {
-      var millenial = true;
-      //creating new variable name same as outter scope variable
-      output = "NEW OUTPUT!"; //reasssigng outer scope variable
-      const firstName = "Steven"; //if variable is not present only it look for it is parent scope
-      const str = `Oh, and you're a millenial, ${firstName}`;
-      console.log(str);
-    }
+//     if (birthYear >= 1981 && birthYear <= 1996) {
+//       var millenial = true;
+//       //creating new variable name same as outter scope variable
+//       output = "NEW OUTPUT!"; //reasssigng outer scope variable
+//       const firstName = "Steven"; //if variable is not present only it look for it is parent scope
+//       const str = `Oh, and you're a millenial, ${firstName}`;
+//       console.log(str);
+//     }
 
-    function add(a, b) {
-      return a + b;
-    }
+//     function add(a, b) {
+//       return a + b;
+//     }
 
-    // console.log(str) it cannot be accessed becaues it is block scoped
-    console.log(millenial); // it can be accessed because let and const only block scoped
+//     // console.log(str) it cannot be accessed becaues it is block scoped
+//     console.log(millenial); // it can be accessed because let and const only block scoped
 
-    console.log(output);
-  }
+//     console.log(output);
+//   }
 
-  printAge();
+//   printAge();
 
-  // console(add(2,3)) // only if we are using use-strict mode function only block scoped otherwise fuctions are not block scoped
+//   // console(add(2,3)) // only if we are using use-strict mode function only block scoped otherwise fuctions are not block scoped
 
-  return age; //here we cannot access inner scope variable output
-}
+//   return age; //here we cannot access inner scope variable output
+// }
 
-const firstName = "Jonas"; //global scope
-calcAge(1991);
+// const firstName = "Jonas"; //global scope
+// calcAge(1991);
 
 //Variable Environment Hoisting and Temporal Dead Zone (TDZ)
 
@@ -101,33 +101,66 @@ calcAge(1991);
 // const year = 1991;
 
 //Functions
-console.log(addDecl(2, 3)); // It is accessible
+// console.log(addDecl(2, 3)); // It is accessible
 // console.log(addArrow(2, 3)); // it throws typeerror and show erro it is not function
 // console.log(addExpr(2, 3)); // it is declared in const so it in temperol dead zone before initialization throw reference error
 
-function addDecl(a, b) {
-  return a + b;
-}
+// function addDecl(a, b) {
+//   return a + b;
+// }
 
-const addExpr = function (a, b) {
-  return a + b;
-};
+// const addExpr = function (a, b) {
+//   return a + b;
+// };
 
-var addArrow = (a, b) => a + b;
+// var addArrow = (a, b) => a + b;
 
 //Example
-if(!numProducts) deleteShoppingCart();// here var is hoisted and set undefined so it calls function it is not a good practice to declare variable in var
+// if(!numProducts) deleteShoppingCart();// here var is hoisted and set undefined so it calls function it is not a good practice to declare variable in var
 
-var numProducts = 10;
+// var numProducts = 10;
 
-function deleteShoppingCart(){
-  console.log('All products deletedQ')
-}
+// function deleteShoppingCart(){
+//   console.log('All products deletedQ')
+// }
 
-var x=1;
-let y=2;
-const z=3;
+// var x=1;
+// let y=2;
+// const z=3;
 
-console.log(x===window.x);
-console.log(y === window.y);
-console.log(z === window.z);
+// console.log(x===window.x);
+// console.log(y === window.y);
+// console.log(z === window.z);
+
+// `this` keyword
+
+// console.log(this);
+
+// const calcAge = birthYear => {
+//   console.log(2037-birthYear)
+//   console.log(this);
+// }
+
+// calcAge(1991);
+
+const jonas = {
+  year: 1991,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.year);
+  },
+};
+
+jonas.calcAge();
+
+const harsha = {
+  year: 2017,
+};
+
+harsha.calcAge = jonas.calcAge;
+
+harsha.calcAge();
+
+const f = jonas.calcAge;
+
+f();
