@@ -199,3 +199,19 @@ const jonas = {
 
 jonas.greet();
 jonas.calcAge();
+
+//arguments keyword
+
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+
+const addArrow = (a, b) => {
+  // console.log(arguments);// It is not accessible in arrow function
+  return a + b;
+};
+
+addExpr(2,4);
+addExpr(2,4,5,7);
+addArrow(2, 5);
