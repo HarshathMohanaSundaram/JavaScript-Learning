@@ -26,7 +26,6 @@
 
 // first();
 
-
 // //anohter example
 // const a = 'jonas';
 
@@ -52,13 +51,12 @@
 // so it cannnot access first and second variables
 // so callstack cannot affect scope chain
 
-
 //Scope Practice
 //function is global scope
-function calcAge(birthYear) { 
-  const age = 2037 - birthYear;//function scope
-  
-  function printAge(){
+function calcAge(birthYear) {
+  const age = 2037 - birthYear; //function scope
+
+  function printAge() {
     //it cannot access gloably
     let output = `${firstName}, You are ${age}, born in ${birthYear}`;
     console.log(output);
@@ -72,25 +70,64 @@ function calcAge(birthYear) {
       console.log(str);
     }
 
-    function add(a, b){
-      return a+b;
+    function add(a, b) {
+      return a + b;
     }
 
-    
     // console.log(str) it cannot be accessed becaues it is block scoped
-    console.log(millenial) // it can be accessed because let and const only block scoped
-    
-    console.log(output)
-  }
+    console.log(millenial); // it can be accessed because let and const only block scoped
 
+    console.log(output);
+  }
 
   printAge();
 
-  // console(add(2,3)) // only if we are using use-strict mode function only block scoped otherwise fuctions are not block scoped 
+  // console(add(2,3)) // only if we are using use-strict mode function only block scoped otherwise fuctions are not block scoped
 
   return age; //here we cannot access inner scope variable output
 }
 
-const firstName = 'Jonas';//global scope
+const firstName = "Jonas"; //global scope
 calcAge(1991);
 
+//Variable Environment Hoisting and Temporal Dead Zone (TDZ)
+
+// console.log(me); //Undefined
+// console.log(job); //ReferenceError: can't access lexical declaration 'job' before initialization
+// console.log(year); //ReferenceError: can't access lexical declaration 'year' before initialization
+
+// var me = 'Jonas';
+// let job = 'teacher';
+// const year = 1991;
+
+//Functions
+console.log(addDecl(2, 3)); // It is accessible
+// console.log(addArrow(2, 3)); // it throws typeerror and show erro it is not function
+// console.log(addExpr(2, 3)); // it is declared in const so it in temperol dead zone before initialization throw reference error
+
+function addDecl(a, b) {
+  return a + b;
+}
+
+const addExpr = function (a, b) {
+  return a + b;
+};
+
+var addArrow = (a, b) => a + b;
+
+//Example
+if(!numProducts) deleteShoppingCart();// here var is hoisted and set undefined so it calls function it is not a good practice to declare variable in var
+
+var numProducts = 10;
+
+function deleteShoppingCart(){
+  console.log('All products deletedQ')
+}
+
+var x=1;
+let y=2;
+const z=3;
+
+console.log(x===window.x);
+console.log(y === window.y);
+console.log(z === window.z);
