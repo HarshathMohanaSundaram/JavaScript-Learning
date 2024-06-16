@@ -1,3 +1,5 @@
+// 'use-strict'
+
 // //scope and scope chain
 // const myName = 'Jonas';
 
@@ -50,4 +52,45 @@
 // so it cannnot access first and second variables
 // so callstack cannot affect scope chain
 
+
+//Scope Practice
+//function is global scope
+function calcAge(birthYear) { 
+  const age = 2037 - birthYear;//function scope
+  
+  function printAge(){
+    //it cannot access gloably
+    let output = `${firstName}, You are ${age}, born in ${birthYear}`;
+    console.log(output);
+
+    if (birthYear >= 1981 && birthYear <= 1996) {
+      var millenial = true;
+      //creating new variable name same as outter scope variable
+      output = "NEW OUTPUT!"; //reasssigng outer scope variable
+      const firstName = "Steven"; //if variable is not present only it look for it is parent scope
+      const str = `Oh, and you're a millenial, ${firstName}`;
+      console.log(str);
+    }
+
+    function add(a, b){
+      return a+b;
+    }
+
+    
+    // console.log(str) it cannot be accessed becaues it is block scoped
+    console.log(millenial) // it can be accessed because let and const only block scoped
+    
+    console.log(output)
+  }
+
+
+  printAge();
+
+  // console(add(2,3)) // only if we are using use-strict mode function only block scoped otherwise fuctions are not block scoped 
+
+  return age; //here we cannot access inner scope variable output
+}
+
+const firstName = 'Jonas';//global scope
+calcAge(1991);
 
