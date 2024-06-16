@@ -226,35 +226,37 @@ const books = [
 // Destructuring Arrays
 
 console.log('Destructuring Arrays');
-const [firstBook, secondBook] = books
-const[,,thirdBook] = books;
+const [firstBook, secondBook] = books;
+const [, , thirdBook] = books;
 
 console.log(firstBook, secondBook, thirdBook);
 
-const exampleRatings = [['rating', 4.19], ['ratingsCount', 144584]];
+const exampleRatings = [
+  ['rating', 4.19],
+  ['ratingsCount', 144584],
+];
 
-const[[, ratings], [,ratingsCount]] = exampleRatings;
+const [[, ratings], [, ratingsCount]] = exampleRatings;
 
 console.log('Ratings', ratings);
-console.log('Ratings Count',ratingsCount);
+console.log('Ratings Count', ratingsCount);
 
 const ratingStars = [63405, 1808];
 
-const[fiveStarRatings, oneStarRatings, threeStartRatings=0] = ratingStars;
+const [fiveStarRatings, oneStarRatings, threeStartRatings = 0] = ratingStars;
 
 console.log(fiveStarRatings, oneStarRatings, threeStartRatings);
 
-
 console.log('Destructuring Objects');
 
-const {title, author, ISBN} = books[0];
+const { title, author, ISBN } = books[0];
 console.log(title, author, ISBN);
 
-const {keywords: tags} = books[0]
+const { keywords: tags } = books[0];
 
 console.log(tags);
 
-const { language, programmingLanguage='unknown'} = books[6];
+const { language, programmingLanguage = 'unknown' } = books[6];
 console.log(language, programmingLanguage);
 
 let bookTitle = 'unknown';
@@ -262,15 +264,19 @@ let bookAuthor = 'unknown';
 
 console.log('Before', bookTitle, bookAuthor);
 
-({title: bookTitle, author: bookAuthor} = books[0]);
+({ title: bookTitle, author: bookAuthor } = books[0]);
 
 console.log('After', bookTitle, bookAuthor);
 
-const {thirdParty: {goodreads: { rating}}} = books[0];
+const {
+  thirdParty: {
+    goodreads: { rating },
+  },
+} = books[0];
 console.log(rating);
 
-function printBookInfo({title, author, year='year unknown'}) {
-    console.log(`${title} by ${author}, ${year}`);
+function printBookInfo({ title, author, year = 'year unknown' }) {
+  console.log(`${title} by ${author}, ${year}`);
 }
 
 printBookInfo({
@@ -281,3 +287,11 @@ printBookInfo({
 
 printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick' });
 
+const bookAuthors = [...books[0].author, ...books[1].author];
+console.log(bookAuthors);
+
+const spellWord = function (str) {
+  console.log(...str);
+};
+
+spellWord('JavaScript');
