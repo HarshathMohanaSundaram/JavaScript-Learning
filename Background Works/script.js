@@ -173,9 +173,9 @@ const jonas = {
   calcAge: function () {
     console.log(this);
     console.log(2037 - this.year);
-    const isMillenial = function(){
-      console.log(this.year >=1981 && this.year <=1996);
-    }
+    const isMillenial = function () {
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
 
     isMillenial();
   },
@@ -184,11 +184,11 @@ const jonas = {
   //   console.log(this);
   //   console.log(`Hey ${this.firstName}`); //arrow function does not have its own `this` it access it from parent scope
   // },
-  greet: function(){
+  greet: function () {
     console.log(this);
     console.log(`Hey ${this.firstName}`);
   },
 };
 
 jonas.greet();
-jonas.calcAge()
+jonas.calcAge();
