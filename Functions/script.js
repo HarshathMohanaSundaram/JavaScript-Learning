@@ -212,3 +212,86 @@ console.log(addVAT2(199));
 console.log(addVAT2(100));
 
 */
+
+/*
+// Coding Challenge
+const poll = {
+  question: 'What is your favourite Programming Language?',
+  options: ['0:JavaScript', '1:Python', '2:Rust', '3:C++'],
+  answers: new Array(4).fill(0),
+  // My Options
+  // registerNewAnswer(){
+  //   const [option1, option2, option3, option4] = this.options;
+    
+  //   const answer = Number(
+  //     prompt(
+  //       `${this.questions} \n
+  //       ${option1.split(':')[0]}: ${option1.split(':')[1]} \n
+  //       ${option2.split(':')[0]}: ${option2.split(':')[1]} \n
+  //       ${option3.split(':')[0]}: ${option3.split(':')[1]} \n
+  //       ${option4.split(':')[0]}: ${option4.split(':')[1]} \n
+  //       (Write Option Number)`
+  //     )
+  //   );
+
+  //   console.log(answer);
+  //   if (answer && (answer>=0 && answer <=3 )){
+  //     this.answers[answer]++;
+  //     const pollResult = displayResults.bind(this);
+  //     pollResult('string')
+  //     pollResult();
+  //   } else {
+  //     alert('Wrong Input');
+  //   }
+  // }
+  registerNewAnswer() {
+    const answer = Number(
+      prompt(
+        `${this.question}\n${this.options.join('\n')}\n(Write option number)`
+      )
+    );
+
+    typeof answer === 'number' &&
+      answer < this.answers.length &&
+      this.answers[answer]++;
+    console.log(this.answers);
+  },
+  displayResults(type = 'array') {
+    if (type == 'array') {
+      console.log(this.answers);
+    } else if (type == 'string') {
+      console.log(`Poll results are ${this.answers.join(', ')}`);
+    }
+  },
+};
+
+//My Logic
+// const displayResults = function (type = 'array') {
+//   if (type == 'array') {
+//     console.log(this.answers);
+//   } else {
+//     console.log(`Poll results are ${this.answers}`);
+//   }
+// };
+
+const testData1 = {
+  answers: [5, 2, 3],
+};
+
+const testData2 = {
+  answers: [1, 5, 3, 9, 6, 1],
+};
+
+const displayResultData1 = poll.displayResults.bind(testData1);
+console.log(displayResultData1(), displayResultData1('string'));
+const displayResultData2 = poll.displayResults.bind(testData2);
+console.log(displayResultData2(), displayResultData2('string'));
+poll.displayResults.call({ answers: [5, 2, 3] });
+poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
+
+document
+  .querySelector('.poll')
+  .addEventListener('click', poll.registerNewAnswer.bind(poll));
+*/
