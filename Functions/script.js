@@ -295,3 +295,20 @@ document
   .querySelector('.poll')
   .addEventListener('click', poll.registerNewAnswer.bind(poll));
 */
+
+/* Immediate Invoke Function Expression (IIFE)
+const runOnce = function () {
+  console.log('Run Only One time');
+};
+
+runOnce();
+
+(function () {
+  console.log('This will never again');
+})();
+
+//arrow
+
+(() => console.log('Arrow will never run again'))();
+*/
+
