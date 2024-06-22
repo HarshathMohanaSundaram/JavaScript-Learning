@@ -132,7 +132,7 @@ const book = lufthansa.book;
 // Not work
 //book(23, 'Sarah Williams');
 
-/*
+/* Call and Apply for setting `this` keywor explictly
 // Call Method
 book.call(eurowings, 23, 'Sarah Williams');
 console.log(eurowings);
