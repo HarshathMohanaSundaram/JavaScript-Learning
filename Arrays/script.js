@@ -81,10 +81,34 @@ displayMovements(account1.movements);
 
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov);
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance} €`;
 };
 
 calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = function (movements) {
+  const income = movements
+    .filter(mov => mov > 0)
+    .reduce((tot, mov) => tot + mov, 0);
+  labelSumIn.textContent = `${income}€`;
+
+  const outgoing = movements
+    .filter(mov => mov < 0)
+    .reduce((tot, mov) => tot + mov, 0);
+  labelSumOut.textContent = `${Math.abs(outgoing)}€`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((int, _, arr) => {
+      console.log(arr);
+      return int >= 1;
+    })
+    .reduce((amt, int) => amt + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
+
+calcDisplaySummary(account1.movements);
 
 const createUserNames = accs => {
   accs.forEach(acc => {
@@ -283,6 +307,7 @@ const maxMovement = movements.reduce((max, curr) => {
 console.log(maxMovement);
 */
 
+/*
 // Coding Challenge 2
 
 
@@ -297,3 +322,16 @@ console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
 
 console.log('---------------DATA 2------------------');
 console.log(calcAverageHumanAge([16, 6, ,10, 5, 6, 1, 4]));
+*/
+
+/*
+// Chaining Methods
+const euroToUsd = 1.1;
+
+// PIPELINE
+const totalDepositUsd = movements
+  .filter(mov => mov > 0)
+  .map(mov => mov * euroToUsd)
+  .reduce((tot, mov) => tot + mov, 0);
+console.log(totalDepositUsd);
+*/
