@@ -101,7 +101,6 @@ const calcDisplaySummary = function (movements) {
     .filter(mov => mov > 0)
     .map(deposit => (deposit * 1.2) / 100)
     .filter((int, _, arr) => {
-      console.log(arr);
       return int >= 1;
     })
     .reduce((amt, int) => amt + int, 0);
@@ -334,4 +333,18 @@ const totalDepositUsd = movements
   .map(mov => mov * euroToUsd)
   .reduce((tot, mov) => tot + mov, 0);
 console.log(totalDepositUsd);
+*/
+/*
+// Coding Challeng 3
+const calcAverageHumanAge = ages => {
+  return ages
+    .map(age => (age <= 2 ? 2 * age : 16 + age * 2))
+    .filter(age => age >= 18)
+    .reduce((sum, age, _, arr) => sum + age / arr.length, 0);
+};
+console.log('---------------DATA 1------------------');
+console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+
+console.log('---------------DATA 2------------------');
+console.log(calcAverageHumanAge([16, 6, , 10, 5, 6, 1, 4]));
 */
