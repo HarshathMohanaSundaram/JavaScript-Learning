@@ -348,3 +348,16 @@ console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
 console.log('---------------DATA 2------------------');
 console.log(calcAverageHumanAge([16, 6, , 10, 5, 6, 1, 4]));
 */
+
+/*
+// Find Method
+const firstWithdrawal = movements.find(mov => mov < 0);
+
+console.log(movements);
+console.log(firstWithdrawal);
+
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+*/
