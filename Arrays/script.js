@@ -472,3 +472,35 @@ console.log(anyDeposit);
 console.log(movements.every(mov => mov > 0));
 console.log(account4.movements.every(mov => mov > 0));
 */
+
+/*
+// Flat and FlatMap
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+const arrDeep = [
+  [1, [2, 3]],
+  [4, [5, 6], 7, 8],
+];
+console.log(arrDeep.flat());
+console.log(arrDeep.flat(2));
+
+const accountMovements = accounts.map(acc => acc.movements);
+console.log(accountMovements);
+const allMovements = accountMovements.flat();
+console.log(allMovements);
+// const overalBalance = allMovements.reduce((tot, mov) => tot + mov, 0);
+// console.log(overalBalance);
+
+// const overalBalance = accounts
+//   .map(acc => acc.movements)
+//   .flat()
+//   .reduce((tot, mov) => tot + mov, 0);
+// console.log(overalBalance);
+
+// flatMap
+const overalBalance = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((tot, mov) => tot + mov, 0);
+console.log(overalBalance);
+*/
