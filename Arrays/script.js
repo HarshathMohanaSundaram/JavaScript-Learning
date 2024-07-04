@@ -61,6 +61,43 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = '';
+
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    const html = `<div class="movements__row">
+                    <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type}</div>
+                    <div class="movements__value">${mov}€</div>
+                  </div>`;
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+
+displayMovements(account1.movements);
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov);
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcDisplayBalance(account1.movements);
+
+const createUserNames = accs => {
+  accs.forEach(acc => {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+createUserNames(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -158,3 +195,105 @@ currenciesUnique.forEach(function(value){
   console.log(`${value}`);
 })
 */
+
+/*
+// Coding Challenge 1
+const juilaData1 = [3, 5, 2, 12, 7];
+const juliadData2 = [9, 16, 6, 8, 3];
+
+const kateData1 = [4, 1, 15, 8, 3];
+const kateData2 = [10, 5, 6, 1, 4];
+
+const checkDogs = function (dogsJulia, dogsKate) {
+  const correctJuliaData = dogsJulia.slice();
+  correctJuliaData.splice(0,1);
+  correctJuliaData.splice(-2);
+  // dogsJulia.slice(1,3)
+  const wholeData = correctJuliaData.concat(dogsKate);
+
+  wholeData.forEach(function (dog, i) {
+    if (dog < 3) {
+      console.log(`Dog ${i + 1} is still a puppy`);
+    } else {
+      console.log(`Dog ${i + 1} is an adult, and is ${dog} years old`);
+    }
+  });
+};
+console.log('---------------DATA 1-------------------');
+checkDogs(juilaData1, kateData1);
+console.log('---------------DATA 2------------------');
+checkDogs(juliadData2, kateData2)
+*/
+
+/*
+// Map
+const euroToUsd = 1.1;
+
+const movementsUsd = movementsAmount.map(amount => {
+  return amount * euroToUsd;
+});
+
+const movementsUsdMapArrow = movements.map(amount => amount * euroToUsd);
+
+console.log(movements);
+console.log(movementsUsd);
+console.log(movementsUsdMapArrow);
+
+const movementsUsdfor = [];
+for (const move of movements) movementsUsdfor.push(move * euroToUsd);
+
+console.log(movementsUsdfor);
+
+const movementsDescriptions = movements.map((mov, i) => {
+  return `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdraw'} ${Math.abs(
+    mov
+  )}`;
+});
+
+console.log(movementsDescriptions);
+*/
+
+/*
+// filter
+const deposits = movements.filter(mov => mov > 0);
+console.log(deposits);
+const withdraws = movements.filter(mov => mov < 0);
+console.log(withdraws);
+*/
+
+/*
+//Reducer
+/*
+// reducer example
+const balance = movements.reduce(function(accumalator, current, index, array){
+  console.log(`Iteration ${index}: ${accumalator}`);
+  return accumalator + current
+}, 0); //Here is the intial accumalator value
+
+const balance = movements.reduce((acc, cur) => {
+  return acc + cur;
+}, 0);
+
+console.log(balance);
+
+// Maximum value
+const maxMovement = movements.reduce((max, curr) => {
+  return max > curr ? max : curr
+}, movements[0]);
+console.log(maxMovement);
+*/
+
+// Coding Challenge 2
+
+
+const calcAverageHumanAge = (ages) => {
+  const humanAges = ages.map((age) => age <= 2 ? 2 * age: 16 + age * 2);
+  const adults = humanAges.filter((age) => age >= 18);
+  const avgAges = adults.reduce((sum, age,_,arr) => sum + age/arr.length, 0);
+  return avgAges;
+}
+console.log('---------------DATA 1------------------');
+console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+
+console.log('---------------DATA 2------------------');
+console.log(calcAverageHumanAge([16, 6, ,10, 5, 6, 1, 4]));
