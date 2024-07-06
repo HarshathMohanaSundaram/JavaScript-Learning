@@ -335,3 +335,11 @@ console.log((2.3799).toFixed(2)); // 2.38 - string
 console.log(+(2.345).toFixed(2)); // 2.35 - Number
 */
 
+/*
+labelBalance.addEventListener('click', () => {
+  [...document.querySelectorAll('.movements__row')].forEach((row, i) => {
+    if (i % 2 == 0) row.style.backgroundColor = 'orangered';
+    if (i % 3 == 0) row.style.backgroundColor = 'blue';
+  });
+});
+*/
