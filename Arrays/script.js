@@ -574,3 +574,125 @@ labelBalance.addEventListener('click', function(){
   console.log(movementsUI);
 })
 */
+
+/*
+// Array Methods Practice
+//1.
+const bankDepositSum = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((tot, dep) => tot + dep, 0);
+console.log(bankDepositSum);
+
+//2.
+//2a.
+const numDeposits1000 = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov >= 1000).length;
+console.log(numDeposits1000);
+
+//2b.
+const numDeposits1000Reduce = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((count, dep) => (dep >= 1000 ? ++count : count), 0);
+console.log(numDeposits1000Reduce);
+
+//3.
+const { deposits, withdrawals } = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sum, cur) => {
+      // cur > 0 ? sum.deposits+=cur : sum.withdrawals+=cur;
+      sum[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+      return sum;
+    },
+    { deposits: 0, withdrawals: 0 }
+  );
+
+console.log(deposits, withdrawals);
+
+//4.
+// this is a nice titile => This Is a Nice Title
+const convertTitleCase = function (title) {
+  const captialize = str => str[0].toUpperCase() + str.slice(1);
+  const expections = ['a', 'an', 'the', 'but', 'and', 'or', 'on', 'in', 'with'];
+
+  const titleCase = title
+    .toLowerCase()
+    .split(' ')
+    .map(word =>
+      expections.includes(word) ? word : captialize(word)
+    )
+    .join(' ');
+  return captialize(titleCase);
+};
+
+console.log(convertTitleCase('this is a nice titile'));
+console.log(convertTitleCase('LONG LONG a title but not a sentence'));
+console.log(convertTitleCase('and here is another title with an EXAMPLE'));
+*/
+
+/*
+// Coding Challenge 4
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+
+// task 1: Create add node recommenedFoo -> curFood ** 0.75 * 0.28;
+dogs.forEach(
+  dog => (dog.recommendedFood = Math.trunc(dog.weight ** 0.75 * 28))
+);
+console.log(dogs);
+
+// task 2: Find Sarah Dogs and log its eat too much or too little
+const dogSarah = dogs.find(dog => dog.owners.includes('Sarah'));
+console.log(dogSarah);
+console.log(
+  `Sarah's dog is eating too ${
+    dogSarah.curFood > dogSarah.recommendedFood ? 'much' : 'little'
+  } `
+);
+
+// task 3: array containng owners name separation based on eats too much too little
+const ownersEatTooMuch = dogs
+  .filter(dog => dog.curFood > dog.recommendedFood)
+  .flatMap(dog => dog.owners);
+console.log(ownersEatTooMuch);
+
+const ownersEatTooLittle = dogs
+  .filter(dog => dog.curFood < dog.recommendedFood)
+  .flatMap(dog => dog.owners);
+console.log(ownersEatTooLittle);
+
+// task 4: Log a string to the console for each array created in 3., like this: "Matilda and Alice and Bob's dogs eat too much"!
+console.log(`"${ownersEatTooMuch.join(' and ')}'s dogs eat too much"!`);
+console.log(`"${ownersEatTooLittle.join(' and ')}'s dogs eat too little"!`);
+
+// task 5: find any dog eactly eat recommended food
+console.log(dogs.some(dog => dog.curFood == dog.recommendedFood));
+
+// task 6: find dog eat okay recommened food
+const checkEatingOkay = function (dog) {
+  return dog.curFood > dog.recommendedFood * 0.9 &&
+    dog.curFood < dog.recommendedFood * 1.1;
+};
+
+console.log(dogs.some(checkEatingOkay));
+
+// task 7: create array of dog eating okay
+const dogsEatingOkay = dogs.filter(checkEatingOkay)
+console.log(dogsEatingOkay);
+
+// task 8. create array with dogs object whose recommendedFood in ascending order
+//1
+const dogsSortRecFood1 = dogs.slice().sort((a,b) => a.recommendedFood - b.recommendedFood);
+//2
+const dogsSortRecFood2 = dogs.slice().sort(
+  (a, b) => a.recommendedFood > b.recommendedFood
+);
+console.log(dogsSortRecFood1);
+console.log(dogsSortRecFood2);
+*/
