@@ -81,6 +81,11 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // Functions
 
+const formattedCur = (value, locale, currency) => { return new Intl.NumberFormat(locale, {
+  style: 'currency',
+  currency: currency,
+}).format(value) };
+
 const formatMovementDate = function (date, locale) {
   const calcDaysPassed = (date1, date2) =>
     Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
@@ -118,7 +123,11 @@ const displayMovements = function (account, sort = false) {
       i + 1
     } ${type}</div>
         <div class="movements__date">${displayDate}</div>
-        <div class="movements__value">${mov.toFixed(2)}€</div>
+        <div class="movements__value">${formattedCur(
+          mov,
+          account.locale,
+          account.currency
+        )}</div>
       </div>
     `;
 
@@ -128,19 +137,20 @@ const displayMovements = function (account, sort = false) {
 
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
+  const formattedMov = formattedCur(acc.balance, acc.locale, acc.currency)
+  labelBalance.textContent = formattedMov;
 };
 
 const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes.toFixed(2)}€`;
+  labelSumIn.textContent = formattedCur(incomes, acc.locale, acc.currency);
 
   const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out.toFixed(2))}€`;
+  labelSumOut.textContent = Math.abs(formattedCur(out, acc.locale, acc.currency));
 
   const interest = acc.movements
     .filter(mov => mov > 0)
@@ -150,7 +160,7 @@ const calcDisplaySummary = function (acc) {
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
+  labelSumInterest.textContent = formattedCur(interest, acc.locale, acc.currency);
 };
 
 const createUsernames = function (accs) {
@@ -525,4 +535,19 @@ const days1 = calcDaysPassed(
   new Date(2037, 3, 14, 10, 8)
 ); // date library moment.js
 console.log(days1);
+*/
+
+/*
+const num = 658933.65
+
+const option = {
+  style: 'currency',
+  unit: 'celsius',
+  currency: 'EUR',
+}
+
+console.log('US: ',new Intl.NumberFormat('en-US',option).format(num));
+console.log('Germany: ', new Intl.NumberFormat('en-DE', option).format(num));
+console.log('Syria: ', new Intl.NumberFormat('ar-SY', option).format(num));
+console.log('Browser: ', new Intl.NumberFormat(navigator.language, option).format(num));
 */
