@@ -363,3 +363,79 @@ console.log(PI);
 console.log(Number('230_000'));// NaN
 console.log(parseInt('230_000'));// 230
 */
+
+/*
+// BigInt
+console.log(2 ** 53 - 1); // 9007199254740991
+console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
+console.log(2 ** 53 + 1); // 9007199254740992
+console.log(2 ** 53 + 2); // 9007199254740994
+console.log(2 ** 53 + 3); // 9007199254740996
+console.log(2 ** 53 + 4); // 9007199254740996
+
+console.log(78837478634987678684598646856898948544); // 7.883747863498768e+37
+console.log(78837478634987678684598646856898948544n); // 78837478634987678684598646856898948544n
+console.log(BigInt(78837478634987678684598646856898948544)); // 78837478634987683013741142304303874048n
+
+// Operations
+console.log(10000n + 10000n); // 20000n
+console.log(9758893453896943868456845689549498898595949n * 1000000000000n); //9758893453896943868456845689549498898595949000000000000n
+
+const huge = 8758743679869598n;
+const num = 23
+//console.log(huge + num); // Uncaught TypeError: can't convert BigInt to number
+console.log(huge + BigInt(num)); // 8758743679869621n
+
+// Exceptions
+console.log(20n > 15); // true
+console.log(20n === 20); // false
+console.log(20n == 20); // true
+console.log(typeof 20n); // bigint
+
+console.log(huge + ' is REALLY big!!!!'); // 8758743679869598 is REALLY big!!!!
+
+// Divisions
+console.log(10n/3n); // 3n
+console.log(11n / 3n); // 3n
+*/
+
+/*
+// Creating Date
+const now = new Date();
+console.log(now);
+
+console.log(new Date('Tue Jul 02 2022 1:56:20'));
+
+console.log(new Date('May 17 2002'));
+
+console.log(new Date(account1.movementsDates[0]));
+
+console.log(new Date(2037, 11, 19, 15, 23, 5)); // Here month is zero based we need give month - 1
+
+console.log(new Date(2037, 10, 40)); // it auto correc the data
+
+console.log(new Date(0));
+console.log(new Date(3 * 24 * 60 * 60 * 1000));
+
+// working with dates
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay());
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.getMilliseconds());
+console.log(future.toISOString());
+console.log(future.getTime());
+
+console.log(new Date(2142237180000));
+
+console.log(Date.now());
+
+future.setFullYear(2040);
+
+console.log(future)
+*/
