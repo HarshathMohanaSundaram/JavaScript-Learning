@@ -188,7 +188,6 @@ const revealSection = function (entires, observer) {
   if (!entry.isIntersecting) return;
 
   entry.target.classList.remove('section--hidden');
-
   observer.unobserve(entry.target);
 };
 const sectionObserver = new IntersectionObserver(revealSection, {
@@ -200,6 +199,29 @@ allSections.forEach(section => {
   section.classList.add('section--hidden');
 });
 
+// Lazy Loading images
+const imgTargets = document.querySelectorAll('img[data-src]');
+
+const loadImg = function (entires, observer) {
+  const [entry] = entires;
+
+  if (!entry.isIntersecting) return;
+
+  // Replace the image
+  entry.target.src = entry.target.dataset.src;
+  entry.target.addEventListener('load', e =>
+    e.target.classList.remove('lazy-img')
+  );
+  observer.unobserve(entry.target);
+};
+
+const imgObserver = new IntersectionObserver(loadImg, {
+  root: null,
+  threshold: 0,
+  rootMargin: '200px',
+});
+
+imgTargets.forEach(img => imgObserver.observe(img));
 ///////////////////////////////////////////////////////////////////
 //////
 /*
