@@ -100,12 +100,14 @@ tabsContainer.addEventListener('click', function (e) {
   //Guard Class
   if (!clickedTabElement) return;
 
-  // Active tab
+  // Remove active Content
   tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+  
+  // Active tab
   clickedTabElement.classList.add('operations__tab--active');
 
   // Activate Content area
-  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
   document
     .querySelector(`.operations__content--${clickedTabElement.dataset.tab}`)
     .classList.add('operations__content--active');
