@@ -153,3 +153,30 @@ h1.addEventListener('mouseenter', alertH1);
 
 // setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 */
+
+/*
+// Event Propagation: Bubbling and Capturing
+
+// rbg(255, 255, 255)
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`;
+
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('LINK', e.target, e.currentTarget);
+
+  // Stop Propagation
+  // e.stopPropagation(); // Not call any events on the parent elements
+});
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('CONATAINER', e.target, e.currentTarget);
+});
+
+document.querySelector('.nav').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('NAV', e.target, e.currentTarget);
+}, true); // Traverse down instead of traverse up
+*/
