@@ -125,7 +125,7 @@ btnScroll.addEventListener('click', function (e) {
   );
 
   // scrolling
-  
+
   // old way
   // window.scrollTo(
   //   s1coords.left + window.scrollX,
@@ -139,5 +139,17 @@ btnScroll.addEventListener('click', function (e) {
   // });
 
   // Modern Way
-  section1.scrollIntoView({behavior: 'smooth'})
+  section1.scrollIntoView({ behavior: 'smooth' });
 });
+
+/*
+// Add and remove Event Listeners
+const h1 = document.querySelector('h1');
+const alertH1 = function (e) {
+  alert('addEventListener: Reading header');
+  h1.removeEventListener('mouseenter', alertH1);
+};
+h1.addEventListener('mouseenter', alertH1);
+
+// setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
+*/
