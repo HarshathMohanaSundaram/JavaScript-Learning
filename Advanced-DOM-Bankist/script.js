@@ -34,7 +34,7 @@ document.addEventListener('keydown', function (e) {
 
 ///////////////////////////////////////////////////////////////////
 //////
-
+/*
 // Select, Create and Delete Elements
 console.log(document.documentElement); // Select entire elements
 console.log(document.head); // Select head tag
@@ -71,3 +71,39 @@ document
     // alternate
     //message.parentElement.removeChild(message)
   });
+
+// Styles
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+
+// it only get the inline styles written
+console.log(message.style.backgroundColor);
+console.log(message.style.color);
+
+// to get the style hidden in classes
+console.log(getComputedStyle(message))
+console.log(getComputedStyle(message).height);
+
+message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+
+document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// Attributes
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+console.log(logo.src); // give the absolute url
+console.log(logo.className);
+logo.setAttribute('company', 'Bankist');
+
+console.log(logo.getAttribute('src')); // give the relative attribute given in src
+
+
+// Data Attribute
+console.log(logo.dataset.versionNumber);
+
+// Classes
+logo.classList.add('c', 'j');
+logo.classList.remove('c');// can add multiples
+logo.classList.toggle('c');
+logo.classList.contains('c')
+*/
