@@ -1,5 +1,6 @@
 'use strict';
 
+/*
 const Person = function (firstName, birthYear) {
   this.firstName = firstName;
   this.birthYear = birthYear;
@@ -81,4 +82,31 @@ bmw.accelerate();
 bmw.accelerate();
 bmw.brake();
 bmw.accelerate();
+*/
 
+// class expression
+const PersonExp = class {};
+
+// class declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+  greet() {
+    console.log(`Hey ${this.firstName}`);
+  }
+}
+
+const joey = new PersonCl('Joey', 1991);
+console.log(joey);
+joey.calcAge();
+
+// PersonCl.prototype.greet = function() {
+//   console.log(`Hey ${this.firstName}`);
+// }
+joey.greet();
