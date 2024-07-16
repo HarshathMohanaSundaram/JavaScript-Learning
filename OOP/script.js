@@ -67,6 +67,7 @@ Person.hey = function () {
 Person.hey();
 
 /*
+
 // Coding Challenge 1
 const Car = function (make, speed) {
   this.make = make;
@@ -90,10 +91,11 @@ bmw.accelerate();
 bmw.accelerate();
 bmw.brake();
 bmw.accelerate();
-*/
+
 
 // class expression
 const PersonExp = class {};
+*/
 
 // class declaration
 class PersonCl {
@@ -102,9 +104,6 @@ class PersonCl {
     this.birthYear = birthYear;
   }
 
-  calcAge() {
-    return 2037 - this.birthYear;
-  }
 
   greet() {
     console.log(`Hey ${this.fullName}`);
@@ -132,13 +131,14 @@ class PersonCl {
 
 const joey = new PersonCl('Joey Tribbiani', 1991);
 console.log(joey);
-console.log(joey.age);
+
 
 // PersonCl.prototype.greet = function() {
 //   console.log(`Hey ${this.firstName}`);
 // }
 joey.greet();
 
+/*
 const account = {
   owner: 'jonas',
   movements: [200, 530, 120, 300],
@@ -157,3 +157,29 @@ account.latest = 50;
 console.log(account.movements);
 
 console.log(PersonCl.hey());
+*/
+
+const PersonProto = {
+  calcAge() {
+    return 2037 - this.birthYear;
+  },
+
+  init(fullName, birthYear){
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+};
+
+const steven = Object.create(PersonProto);
+console.log(steven);
+
+
+steven.name = 'Steven';
+steven.birthYear = 2002;
+
+console.log(steven.calcAge());
+
+const sara = Object.create(PersonProto);
+sara.init('Rachel', 1991);
+console.log(sara.calcAge());
+console.log(sara);
