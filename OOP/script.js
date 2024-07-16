@@ -1,6 +1,6 @@
 'use strict';
 
-/*
+
 const Person = function (firstName, birthYear) {
   this.firstName = firstName;
   this.birthYear = birthYear;
@@ -59,6 +59,14 @@ Array.prototype.unique = function () {
 console.log(arr.unique());
 console.dir(x => x + 1);
 
+// Static Method
+Person.hey = function () {
+  console.log('Hey There!!');
+};
+
+Person.hey();
+
+/*
 // Coding Challenge 1
 const Car = function (make, speed) {
   this.make = make;
@@ -114,6 +122,12 @@ class PersonCl {
   get fullName() {
     return this._fullName;
   }
+
+  // Static Method
+  static hey(){
+    console.log('Hey There!!');
+    console.log(this);
+  }
 }
 
 const joey = new PersonCl('Joey Tribbiani', 1991);
@@ -138,7 +152,8 @@ const account = {
   },
 };
 
-
 console.log(account.latest);
 account.latest = 50;
 console.log(account.movements);
+
+console.log(PersonCl.hey());
