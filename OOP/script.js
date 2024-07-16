@@ -89,24 +89,56 @@ const PersonExp = class {};
 
 // class declaration
 class PersonCl {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
     this.birthYear = birthYear;
   }
 
   calcAge() {
-    console.log(2037 - this.birthYear);
+    return 2037 - this.birthYear;
   }
+
   greet() {
-    console.log(`Hey ${this.firstName}`);
+    console.log(`Hey ${this.fullName}`);
+  }
+
+  get age() {
+    return this.calcAge();
+  }
+
+  set fullName(name) {
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
   }
 }
 
-const joey = new PersonCl('Joey', 1991);
+const joey = new PersonCl('Joey Tribbiani', 1991);
 console.log(joey);
-joey.calcAge();
+console.log(joey.age);
 
 // PersonCl.prototype.greet = function() {
 //   console.log(`Hey ${this.firstName}`);
 // }
 joey.greet();
+
+const account = {
+  owner: 'jonas',
+  movements: [200, 530, 120, 300],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  set latest(movement) {
+    this.movements.push(movement);
+  },
+};
+
+
+console.log(account.latest);
+account.latest = 50;
+console.log(account.movements);
