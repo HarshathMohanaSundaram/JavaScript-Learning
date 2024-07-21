@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 const Person = function (firstName, birthYear) {
   this.firstName = firstName;
   this.birthYear = birthYear;
@@ -65,7 +65,6 @@ Person.hey = function () {
 
 Person.hey();
 
-/*
 
 // Coding Challenge 1
 const Car = function (make, speed) {
@@ -94,7 +93,6 @@ bmw.accelerate();
 
 // class expression
 const PersonExp = class {};
-*/
 
 // class declaration
 class PersonCl {
@@ -135,7 +133,6 @@ console.log(joey);
 // }
 joey.greet();
 
-/*
 const account = {
   owner: 'jonas',
   movements: [200, 530, 120, 300],
@@ -154,7 +151,6 @@ account.latest = 50;
 console.log(account.movements);
 
 console.log(PersonCl.hey());
-*/
 
 const PersonProto = {
   calcAge() {
@@ -214,3 +210,34 @@ car.accelerate();
 car.brake();
 car.accelerate();
 console.log(car.speedUS);
+*/
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+//// Inheritance Between "Classes": Constructor
+
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+// Prototypes
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+const Student = function (firstName, birthYear, course) {
+  Person.call(this, firstName, birthYear)
+  this.course = course;
+};
+
+//Linking Prototype
+Student.prototype = Object.create(Person.prototype)
+
+Student.prototype.introduce = function(){
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+}
+
+const mike = new Student('Mike', 2002, 'Computer Science');
+console.log(mike);
+mike.introduce();
+mike.calcAge();
