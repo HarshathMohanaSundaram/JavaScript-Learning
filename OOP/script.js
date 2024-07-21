@@ -377,7 +377,7 @@ const jay = Object.create(StudentProto);
 jay.init('Jay', 2012, 'Computer Science');
 jay.introduce();
 console.log(jay.calcAge());
-*/
+
 
 // Public, Private fields and methods
 class Account {
@@ -449,3 +449,58 @@ Account.helper();
 // Chaining
 acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
 console.log(acc1.getMovements());
+
+
+// Coding Challenge 4
+class Car {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
+  }
+
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/hr`);
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/hr`);
+  }
+}
+
+class EV extends Car {
+  #charge;
+
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.#charge = charge;
+  }
+
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo;
+    return this;
+  }
+
+  accelerate() {
+    this.speed += 20;
+    this.#charge--;
+    console.log(
+      `${this.make} is going at ${this.speed} km/hr with a charge of ${this.#charge}`
+    );
+
+    return this;
+  };
+}
+
+const rivian  = new EV('Rivian', 120, 23);
+rivian.accelerate().chargeBattery(100).accelerate();
+*/
