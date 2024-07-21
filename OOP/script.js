@@ -1,6 +1,5 @@
 'use strict';
 
-
 const Person = function (firstName, birthYear) {
   this.firstName = firstName;
   this.birthYear = birthYear;
@@ -104,7 +103,6 @@ class PersonCl {
     this.birthYear = birthYear;
   }
 
-
   greet() {
     console.log(`Hey ${this.fullName}`);
   }
@@ -123,7 +121,7 @@ class PersonCl {
   }
 
   // Static Method
-  static hey(){
+  static hey() {
     console.log('Hey There!!');
     console.log(this);
   }
@@ -131,7 +129,6 @@ class PersonCl {
 
 const joey = new PersonCl('Joey Tribbiani', 1991);
 console.log(joey);
-
 
 // PersonCl.prototype.greet = function() {
 //   console.log(`Hey ${this.firstName}`);
@@ -164,15 +161,14 @@ const PersonProto = {
     return 2037 - this.birthYear;
   },
 
-  init(fullName, birthYear){
+  init(fullName, birthYear) {
     this.fullName = fullName;
     this.birthYear = birthYear;
-  }
+  },
 };
 
 const steven = Object.create(PersonProto);
 console.log(steven);
-
 
 steven.name = 'Steven';
 steven.birthYear = 2002;
@@ -183,3 +179,38 @@ const sara = Object.create(PersonProto);
 sara.init('Rachel', 1991);
 console.log(sara.calcAge());
 console.log(sara);
+
+// Coding Challenge 2
+class Car {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  get speedUS() {
+    return this.speed/1.6;
+  }
+
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
+  }
+
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/hr`);
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/hr`);
+  }
+}
+
+const car = new Car('Ford', 120);
+car.speedUS = 100;
+console.log(car.speedUS);
+
+car.accelerate();
+car.brake();
+car.accelerate();
+console.log(car.speedUS);
