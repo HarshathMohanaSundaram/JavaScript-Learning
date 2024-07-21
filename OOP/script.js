@@ -226,18 +226,29 @@ Person.prototype.calcAge = function () {
 };
 
 const Student = function (firstName, birthYear, course) {
-  Person.call(this, firstName, birthYear)
+  Person.call(this, firstName, birthYear);
   this.course = course;
 };
 
 //Linking Prototype
-Student.prototype = Object.create(Person.prototype)
+Student.prototype = Object.create(Person.prototype);
 
-Student.prototype.introduce = function(){
+Student.prototype.introduce = function () {
   console.log(`My name is ${this.firstName} and I study ${this.course}`);
-}
+};
 
 const mike = new Student('Mike', 2002, 'Computer Science');
 console.log(mike);
 mike.introduce();
 mike.calcAge();
+
+console.log(mike.__proto__);
+console.log(mike.__proto__.__proto__);
+console.log(mike instanceof Student);
+console.log(mike instanceof Person);
+console.log(Student.prototype.constructor);
+
+Student.prototype.constructor = Student;
+console.log(Student.prototype.constructor);
+
+
