@@ -388,6 +388,10 @@ class Account {
   #movements = [];
   #pin;
 
+  // Protected fields
+  // _pin
+  // _movements = []
+
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
@@ -405,12 +409,18 @@ class Account {
     this.deposit(-val);
   }
 
-  #approveLoan(val) {
+  // Private Method
+  // #approveLoan(val) {
+  //   return true;
+  // }
+
+  // Protected Method
+  _approveLoan(val) {
     return true;
   }
 
   requestLoan(val) {
-    if (this.#approveLoan(val)) {
+    if (this._approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved`);
     }
