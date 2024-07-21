@@ -292,7 +292,7 @@ tesla.chargeBattery(90);
 console.log(tesla);
 tesla.brake();
 tesla.accelerate();
-*/
+
 
 //// Inheritance Between "Classes": ES6 Classes
 
@@ -348,3 +348,33 @@ const harsha = new StudentCl('Harshath', 2002, 'Software Engineering');
 harsha.introduce();
 harsha.calcAge();
 console.log(StudentCl.hey());
+
+
+//// Inheritance Between "Classes": Object.create
+const PersonProto = {
+  calcAge() {
+    return 2037 - this.birthYear;
+  },
+
+  init(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  },
+};
+
+const steven = Object.create(PersonProto);
+const StudentProto = Object.create(PersonProto);
+
+StudentProto.init = function(firstName, birthYear, course ){
+  PersonProto.init.call(this, firstName, birthYear);
+  this.course = course;
+}
+
+StudentProto.introduce = function(){
+  console.log(`My name is ${this.fullName} and I study ${this.course}`);
+}
+const jay = Object.create(StudentProto);
+jay.init('Jay', 2012, 'Computer Science');
+jay.introduce();
+console.log(jay.calcAge());
+*/
