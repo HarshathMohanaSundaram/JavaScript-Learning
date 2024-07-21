@@ -429,6 +429,10 @@ class Account {
   getMovements() {
     return this.#movements;
   }
+
+  static helper(){
+    console.log('Helper');
+  }
 }
 
 const acc1 = new Account('Harshath', 'INR', 1111);
