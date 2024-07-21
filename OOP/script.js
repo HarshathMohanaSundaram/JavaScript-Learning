@@ -474,6 +474,7 @@ class Car {
   brake() {
     this.speed -= 5;
     console.log(`${this.make} is going at ${this.speed} km/hr`);
+    return this;
   }
 }
 
@@ -502,5 +503,5 @@ class EV extends Car {
 }
 
 const rivian  = new EV('Rivian', 120, 23);
-rivian.accelerate().chargeBattery(100).accelerate();
+rivian.accelerate().brake().chargeBattery(100).accelerate();
 */
